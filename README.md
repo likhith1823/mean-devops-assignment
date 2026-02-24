@@ -1,27 +1,134 @@
-In this DevOps task, you need to build and deploy a full-stack CRUD application using the MEAN stack (MongoDB, Express, Angular 15, and Node.js). The backend will be developed with Node.js and Express to provide REST APIs, connecting to a MongoDB database. The frontend will be an Angular application utilizing HTTPClient for communication.  
+# 🚀 MEAN Stack DevOps Assignment
 
-The application will manage a collection of tutorials, where each tutorial includes an ID, title, description, and published status. Users will be able to create, retrieve, update, and delete tutorials. Additionally, a search box will allow users to find tutorials by title.
+This project demonstrates containerization, CI/CD automation, and cloud deployment of a full-stack **MEAN (MongoDB, Express, Angular, Node.js)** application.
 
-## Project setup
+The application has been fully Dockerized and deployed on an Ubuntu VM using Docker Compose with GitHub Actions CI/CD automation.
 
-### Node.js Server
+---
 
-cd backend
+# 📌 Project Overview
 
-npm install
+This assignment includes:
 
-You can update the MongoDB credentials by modifying the `db.config.js` file located in `app/config/`.
+- 🔹 Angular Frontend
+- 🔹 Node.js + Express Backend
+- 🔹 MongoDB Database
+- 🔹 Docker containerization
+- 🔹 Docker Compose deployment
+- 🔹 GitHub Actions CI/CD pipeline
+- 🔹 Nginx Reverse Proxy (Port 80)
+- 🔹 Cloud Deployment on Ubuntu (AWS EC2)
 
-Run `node server.js`
+---
 
-### Angular Client
+# 🏗️ Architecture
+User (Browser)
+↓
+Nginx (Port 80)
+↓
+Frontend (Angular Container)
+↓
+Backend (Node + Express Container)
+↓
+MongoDB (Docker Container)
 
-cd frontend
 
-npm install
+---
 
-Run `ng serve --port 8081`
+# 🐳 Docker Configuration
 
-You can modify the `src/app/services/tutorial.service.ts` file to adjust how the frontend interacts with the backend.
+## Backend Dockerfile
+- Uses Node base image
+- Installs dependencies
+- Exposes port 8080
+- Runs server.js
 
-Navigate to `http://localhost:8081/`
+## Frontend Dockerfile
+- Builds Angular app
+- Uses Nginx to serve static files
+- Exposes port 80
+
+## MongoDB
+- Official MongoDB Docker image
+- Runs as a service inside Docker Compose
+
+---
+
+# ⚙️ Docker Compose Setup
+
+The application is deployed using Docker Compose with three services:
+
+- frontend
+- backend
+- mongo
+☁️ Cloud Deployment (Ubuntu VM - AWS EC2)
+Steps Performed
+
+Created Ubuntu EC2 instance
+
+Installed Docker
+
+Installed Docker Compose
+
+Pulled Docker images from Docker Hub
+
+Deployed using docker-compose
+
+Configured Nginx reverse proxy on port 80
+
+Application is accessible via:
+
+http://<EC2_PUBLIC_IP>
+🔁 CI/CD Pipeline (GitHub Actions)
+
+CI/CD is implemented using GitHub Actions.
+
+Pipeline Workflow:
+
+When code is pushed to the main branch:
+
+Checkout code
+
+Login to Docker Hub
+
+Build backend Docker image
+
+Build frontend Docker image
+
+Push images to Docker Hub
+
+SSH into EC2 server
+
+Pull latest images
+
+Restart containers automatically
+
+Workflow file location:
+
+.github/workflows/mean-ci-cd.yml
+
+
+# 🛠️ Technologies Used
+
+Angular
+
+Node.js
+
+Express
+
+MongoDB
+
+Docker
+
+Docker Compose
+
+GitHub Actions
+
+Nginx
+
+AWS EC2 (Ubuntu)
+
+
+## 🔄 CI/CD Status
+
+GitHub Actions workflow successfully builds and deploys on every push to main branch.

@@ -21,10 +21,10 @@ jobs:
 
       - name: Build Backend Image
         run: |
-          docker build -t likhith1823/mean-devops-backend ./backend
-          docker push likhith1823/mean-devops-backend
+          docker build -t likhith1823/mean-devops-backend:latest ./backend
+          docker push likhith1823/mean-devops-backend:latest
 
       - name: Build Frontend Image
         run: |
-          docker build -t likhith1823/mean-devops-frontend ./frontend
-          docker push likhith1823/mean-devops-frontend
+          docker build -t likhith1823/mean-devops-frontend:latest ./frontend
+          docker push likhith1823/mean-devops-frontend:latest

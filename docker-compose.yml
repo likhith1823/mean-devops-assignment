@@ -1,0 +1,25 @@
+services:
+  mongo:
+    image: mongo
+    container_name: dd-mongo
+    ports:
+      - "27017:27017"
+    restart: always
+
+  backend:
+    build: ./backend
+    container_name: dd-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo
+    restart: always
+
+  frontend:
+    build: ./frontend
+    container_name: dd-frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+    restart: always
